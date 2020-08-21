@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kode is a Premium Bootstrap Admin Template, It's responsive, clean coded and mobile friendly">
+  <meta name="keywords" content="bootstrap, admin, dashboard, flat admin template, responsive," />
+  <title>Dashboard</title>
+
+  <!-- ========== Css Files ========== -->
+  <link href="css/root.css" rel="stylesheet">
+  <style>
+    label {
+   cursor: pointer;
+   /* Style as you please, it will become the visible UI component. */
+}
+
+ #image{
+   opacity: 0;
+   position: absolute;
+}
+#image_text{
+  margin-bottom: 20px;
+}
+  </style>
+
+  </head>
+  <body>
+  <!-- Start Page Loading -->
+  <div class="loading"><img src="img/loading.gif" alt="loading-img"></div>
+  <!-- End Page Loading -->
+ <!-- //////////////////////////////////////////////////////////////////////////// --> 
+  <!-- START TOP -->
+  <div id="top" class="clearflex">
+
+    <!-- Start App Logo -->
+    <div class="applogo">
+      <a class="logo">MPH</a>
+    </div>
+    <!-- End App Logo -->
+
+
+
+    <!-- Start Top Right -->
+    <ul class="top-right">
+
+    <li class="dropdown link">
+      <a href="/unset_image"  class="dropdown-toggle hdbutton">Upload More Image</a>
+    </li>
+
+    <li class="dropdown link">
+        <a href="/get_key"  class="dropdown-toggle hdbutton">Get your API token</a>
+    </li>
+
+    <li class="dropdown link">
+      <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><b><%= username%></b><span class="caret"></span></a>
+        <ul class="dropdown-menu dropdown-menu-list dropdown-menu-right">
+          <li><a href="/logout"><i class="fa falist fa-power-off"></i> Logout</a></li>
+        </ul>
+    </li>
+
+    </ul>
+    <!-- End Top Right -->
+
+  </div>
+  <!-- END TOP -->
+
+<!-- START CONTENT -->
+<div class="content">
+
+  <!-- Start Page Header -->
+  <div class="page-header">
+    <h1 class="title">Welcome to MPH, The deep learning model based on ImageNetV2</h1>
+      <ol class="breadcrumb">
+        <li class="active">Upload images and find out the number plate now</li>
+    </ol>
+    <div>
+      <p>Want to Integrate your app with our deep learning model?<br>
+        Set the auth-token header with the API key when accessing our API.
+      </p>
+      <h5>Your API key will appear here: </h5>
+      <p><%= api_key%></p>
+    </div>
+
+    <!-- Start Page Header Right Div -->
+    <div class="right">
+      <% if(!file_set){ %>
+      <form action="/upload_image" method="POST" enctype="multipart/form-data">
+        <label for="fusk">Select Image </label>
+        <input id="fusk" type="file" name="image" id="image" style="display: none;">
+        <button type="submit">Upload</button>
+      </form>
+      <% } else{ %>
+        <h4 id="image_text"> Image has been uploaded sucessfully</h4>
+        <form action="/show_content" method="POST">
+        <button type="submit">Get Number</button>
+        </form>
+        <% } %>
+    </div>
+    <!-- End Page Header Right Div -->
+
+  </div>
+  <!-- End Page Header -->
+<div>
+<img id="preview" width="200" />
+</div>
+<div>
+  <% if(set_content){ %>
+  <h2 id="image_text">The number is <%= number %> and the date which it was created is <%= date%></h2>
+  <% } %>
+</div>
+
+ <!-- //////////////////////////////////////////////////////////////////////////// --> 
+
+
+<div class="row footer">
+  <div class="col-md-6 text-left">
+  </div>
+</div>
+
+
+</div>
+
+<!-- ================================================
+jQuery Library
+================================================ -->
+<script src="js/jquery.min.js"></script>
+
+<!-- ================================================
+Bootstrap Core JavaScript File
+================================================ -->
+<script src="js/bootstrap/bootstrap.min.js"></script>
+
+<!-- ================================================
+Plugin.js - Some Specific JS codes for Plugin Settings
+================================================ -->
+<script src="js/plugins.js"></script>
+
+<!-- ================================================
+Bootstrap Select
+================================================ -->
+<script src="js/bootstrap-select/bootstrap-select.js"></script>
+
+<!-- ================================================
+Bootstrap Toggle
+================================================ -->
+<script src="js/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+
+<!-- ================================================
+Bootstrap WYSIHTML5
+================================================ -->
+<!-- main file -->
+<script src="js/bootstrap-wysihtml5/wysihtml5-0.3.0.min.js"></script>
+<!-- bootstrap file -->
+<script src="js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+
+<!-- ================================================
+Summernote
+================================================ -->
+<script src="js/summernote/summernote.min.js"></script>
+
+<!-- ================================================
+Flot Chart
+================================================ -->
+<!-- main file -->
+<script src="js/flot-chart/flot-chart.js"></script>
+<!-- time.js -->
+<script src="js/flot-chart/flot-chart-time.js"></script>
+<!-- stack.js -->
+<script src="js/flot-chart/flot-chart-stack.js"></script>
+<!-- pie.js -->
+<script src="js/flot-chart/flot-chart-pie.js"></script>
+<!-- demo codes -->
+<script src="js/flot-chart/flot-chart-plugin.js"></script>
+
+<!-- ================================================
+Chartist
+================================================ -->
+<!-- main file -->
+<script src="js/chartist/chartist.js"></script>
+<!-- demo codes -->
+<script src="js/chartist/chartist-plugin.js"></script>
+
+<!-- ================================================
+Easy Pie Chart
+================================================ -->
+<!-- main file -->
+<script src="js/easypiechart/easypiechart.js"></script>
+<!-- demo codes -->
+<script src="js/easypiechart/easypiechart-plugin.js"></script>
+
+<!-- ================================================
+Rickshaw
+================================================ -->
+<!-- d3 -->
+<script src="js/rickshaw/d3.v3.js"></script>
+<!-- main file -->
+<script src="js/rickshaw/rickshaw.js"></script>
+<!-- demo codes -->
+<script src="js/rickshaw/rickshaw-plugin.js"></script>
+
+<!-- ================================================
+Data Tables
+================================================ -->
+<script src="js/datatables/datatables.min.js"></script>
+
+<!-- ================================================
+Sweet Alert
+================================================ -->
+<script src="js/sweet-alert/sweet-alert.min.js"></script>
+
+<!-- ================================================
+Kode Alert
+================================================ -->
+<script src="js/kode-alert/main.js"></script>
+
+<!-- ================================================
+jQuery UI
+================================================ -->
+<script src="js/jquery-ui/jquery-ui.min.js"></script>
+
+<!-- ================================================
+Moment.js
+================================================ -->
+<script src="js/moment/moment.min.js"></script>
+
+<!-- ================================================
+Full Calendar
+================================================ -->
+<script src="js/full-calendar/fullcalendar.js"></script>
+
+<!-- ================================================
+Bootstrap Date Range Picker
+================================================ -->
+<script src="js/date-range-picker/daterangepicker.js"></script>
+
+<!-- ================================================
+Below codes are only for index widgets
+================================================ -->
+<!-- Today Sales -->
+<script>
+
+// set up our data series with 50 random data points
+
+var seriesData = [ [], [], [] ];
+var random = new Rickshaw.Fixtures.RandomData(20);
+
+for (var i = 0; i < 110; i++) {
+  random.addData(seriesData);
+}
+
+// instantiate our graph!
+
+
+
+
+
+</script>
+
+<!-- Today Activity -->
+<script>
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      $('#preview').attr('src', e.target.result);
+    }
+    
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
+  }
+}
+
+$("#fusk").change(function() {
+  readURL(this);
+});
+
+</script>
+
+</body>
+</html>
